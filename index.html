@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<base href="/">
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="styles/nodes-messages.css">
+	</head>
+	<body ng-app="demoApp" ng-controller="demoCtrl as demo">
+
+		<nodes-messages-wrapper></nodes-messages-wrapper>
+
+		<button ng-click="demo.createMessage()">Create message</button>
+		<button ng-click="demo.dismissLast()">Dismiss last</button>
+		<button ng-click="demo.dismissAll()">Dismiss all</button>
+
+		<!-- bower:js -->
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+		<script src="bower_components/angular-animate/angular-animate.js"></script>
+		<!-- endbower -->
+
+		<script src="src/nodes-messages.module.js"></script>
+		<script src="src/nodes-messages.provider.js"></script>
+		<script src="src/nodes-messages.wrapper.directive.js"></script>
+		<script src="src/nodes-messages.message.directive.js"></script>
+
+		<script>
+			angular.module('demoApp', ['ngSanitize', 'nodes-messages']);
+
+			angular.module('demoApp').config(function(messagesProviderProvider) {
+
+				messagesProviderProvider.configure({
+					verticalPosition: 'top',
+					horizontalPosition: 'right'
+				});
+
+			});
+
+			angular.module('demoApp').controller('demoCtrl', function($scope, messagesProvider) {
+				var vm = this;
+
+				function _getRandomMessage() {
+					return vm.messageContents[Math.floor(Math.random() * vm.messageContents.length)];
+				}
+				vm.messageContents = [
+					'Dette er en besked',
+					'Dette er også en besked',
+					'Dette er måske ikke en besked',
+					'Nogen siger dette er en besked, men ingen vil stå ved det',
+					'Ingen ved om dette er en besked',
+					'Denne besked blev lavet i et reagensglas',
+					'Nogen siger dette er en besked, men ingen vil stå ved det, Nogen siger dette er en besked, men ingen vil stå ved det, Nogen siger dette er en besked, men ingen vil stå ved det, Nogen siger dette er en besked, men ingen vil stå ved det'
+				];
+
+				vm.messageTypes = ['success', 'warning', 'alert', 'info', 'primary', 'secondary', 'porno'];
+
+				vm.message = {
+					type: 'success',
+					dismissButtonHtml: '&times;',
+					dismissOnClick: true,
+					dismissButton: true,
+					showDismissButton: true,
+					dismissOnTimeout: false,
+					timeout: 3200
+				};
+
+				vm.openMessages = [];
+
+				vm.createMessage = function() {
+
+					var msg = angular.copy(vm.message);
+
+					msg.content = _getRandomMessage();
+
+					var msgRef =  messagesProvider.create(msg);
+					vm.openMessages.push(msgRef);
+
+				};
+
+				for(var i = 0; i < 5; i++) {
+					vm.createMessage();
+				}
+
+				vm.dismissLast = function() {
+
+					messagesProvider.dismiss(vm.openMessages[vm.openMessages.length -1]);
+					vm.openMessages.pop();
+				};
+
+				vm.dismissAll = function() {
+
+					messagesProvider.dismiss();
+
+				}
+
+
+			});
+		</script>
+	</body>
+</html>

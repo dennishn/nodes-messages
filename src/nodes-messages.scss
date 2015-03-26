@@ -1,0 +1,74 @@
+/*
+	nodes-messages module
+
+	variables
+*/
+$nodes-messages-max-width: 200px;
+
+// Layout
+.nodes-messages {
+	position: absolute;
+	max-width: $nodes-messages-max-width;
+}
+.nodes-messages__list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.nodes-messages__message {
+
+}
+
+// Elements
+.nodes-messages__content {
+	cursor: default;
+}
+
+.nodes-messages__close-button {
+	cursor: pointer;
+}
+
+// Positioning
+.nodes-messages--left-top {
+	top: 0;
+	left: 0;
+}
+.nodes-messages--left-center {
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+}
+.nodes-messages--left-bottom {
+	bottom: 0;
+	left: 0;
+}
+
+.nodes-messages--center-top {
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.nodes-messages--center-center {
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+.nodes-messages--center-bottom {
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.nodes-messages--right-top {
+	top: 0;
+	right: 0;
+}
+.nodes-messages--right-center {
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+}
+.nodes-messages--right-bottom {
+	right: 0;
+	bottom: 0;
+}

@@ -1,0 +1,7 @@
+<div class="nodes-messages nodes-messages--{{hPos}}-{{vPos}}">
+	<ul class="nodes-messages__list">
+		<li ng-repeat="message in messages track by $index" nodes-messages-message="message">
+			<span ng-bind-html="message.content"></span>
+		</li>
+	</ul>
+</div>
