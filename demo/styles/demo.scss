@@ -1,0 +1,517 @@
+/*
+ 	Nodes Documentation Kit
+	Author: Dennis Haulund Nielsen
+
+	A baseline for providing beautiful documentation for our components
+*/
+
+/*
+	Contents:
+
+	- Variables
+	- Imports
+	- Base
+*/
+
+/*
+	Variables
+*/
+// Breakpoints
+$bp-larger-than-mobile    : "min-width: 400px" !default;
+$bp-larger-than-phablet   : "min-width: 550px" !default;
+$bp-larger-than-tablet    : "min-width: 750px" !default;
+$bp-larger-than-desktop   : "min-width: 1000px" !default;
+$bp-larger-than-desktophd : "min-width: 1200px" !default;
+
+// Colors
+$primary-color: #7b67cf !default;
+$primary-color-light: #9585d9 !default;
+$primary-color-lighter: #e5e1f5 !default;
+$primary-color-dark: #6656ac !default;
+$primary-color-darker: #4a3e7c !default;
+
+
+$secondary-color: #8293bb !default;
+$secondary-color-light: #9ba9c9 !default;
+$secondary-color-lighter: #e6e9f1 !default;
+$secondary-color-dark: #6c7a9b !default;
+$secondary-color-darker: #4e5870 !default;
+
+$info-color: #5aa7ff !default;
+$info-color-light: #7bb9ff !default;
+$info-color-lighter: #deedff !default;
+$info-color-dark: #4b8bd4 !default;
+$info-color-darker: #366499 !default;
+
+$success-color: #85e28a !default;
+$success-color-light: #9de8a1 !default;
+$success-color-lighter: #e7f9e8 !default;
+$success-color-dark: #6fbc73 !default;
+$success-color-darker: #508853 !default;
+
+$warning-color: #f8d053 !default;
+$warning-color-light: #f9d975 !default;
+$warning-color-lighter: #fef6dd !default;
+$warning-color-dark: #cead45 !default;
+$warning-color-darker: #957d32 !default;
+
+$alert-color: #f66a66 !default;
+$alert-color-light: #f88885 !default;
+$alert-color-lighter: #fde1e0 !default;
+$alert-color-dark: #cd5855 !default;
+$alert-color-darker: #94403d !default;
+
+$grey-bright: #f0f2f5 !default;
+$grey-bright-light: #ffffff !default;
+$grey-bright-dark: #d8dadc !default;
+
+$grey-dim: #283138 !default;
+$grey-dim-light: #3b4752 !default;
+$grey-dim-dark: #161a1f !default;
+
+$ui-light: lighten($grey-bright, 3%);
+$ui-medium: darken($grey-bright, 13%);
+$ui-dark: darken($grey-bright, 23%);
+
+$brand-ie: #1299d5;
+$brand-chrome: #d64c39;
+$brand-firefox: #e66000;
+$brand-safari: #0cb2d2;
+$brand-angular: #dd1b16;
+$brand-javascript: #f0db4f;
+$brand-sass: #c55b8e;
+$brand-github: #333;
+$brand-nodes: #ff42ba;
+
+$font-color: $grey-dim-dark !default;
+$font-color-inverse: $grey-dim-light !default;
+
+// Typography
+$font-family: "Open Sans", sans-serif !default;
+
+$base-font-size: 1.6em;
+$base-line-height: 1.5;
+$small-font-size: 0.8em;
+
+
+//Grid Variables
+$container-width: 960px !default;
+$container-width-larger-than-mobile: 85% !default;
+$container-width-larger-than-phablet: 80% !default;
+$total-columns: 12 !default;
+$column-width: 100 / $total-columns !default; // calculates individual column width based off of # of columns
+$column-margin: 4% !default; // space between columns
+
+//Whitespace
+$global-spacing-small: 1rem;
+$global-spacing: 2.5rem;
+$global-spacing-large: 5rem;
+
+// Misc
+$global-radius: 4px !default;
+
+/*
+	Global imports
+*/
+
+// Mixins
+@import "mixins";
+
+
+// Demo Style kit
+@import "helpers";
+
+@import "grid";
+
+@import "layout";
+@import "left-content";
+
+@import "external-links";
+@import "page-navigation";
+
+@import "typography";
+@import "icons";
+
+@import "buttons";
+
+@import "forms";
+
+@import "tables";
+
+@import "link-list";
+@import "icon-list";
+
+@import "panels";
+
+@import "code";
+
+@import "browsers";
+
+// Module Specific styling
+@import "nodes-messages-examples";
+@import "site";
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+
+	font-size: $base-font-size;
+	line-height: $base-line-height;
+
+	font-family: $font-family;
+	font-weight: 400;
+
+	-webkit-font-smoothing: antialiased;
+
+	color: $font-color;
+}
+// Remove it...
+.palette-list {
+	@include clearfix;
+	list-style: none;
+	margin: 2.5rem 0;
+	.palette {
+		position: relative;
+		float: left;
+		margin: 1rem;
+		width: 120px;
+		height: 160px;
+		border-radius: $global-radius;
+		box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+		overflow: hidden;
+
+		&__light,
+		&__lighter,
+		&__dark,
+		&__darker {
+			position: absolute;
+			width: 50%;
+			height: 30px;
+		}
+		&__light,
+		&__dark {
+			bottom: 60px;
+		}
+		&__lighter,
+		&__darker {
+			bottom: 30px;
+		}
+
+		&__light,
+		&__lighter {
+			left: 0;
+		}
+		&__dark,
+		&__darker {
+			right: 0;
+		}
+
+		&__meta {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 30px;
+			line-height: 20px;
+			padding: 5px;
+			text-align: center;
+			background: #fff;
+
+			border-bottom-left-radius: $global-radius;
+			border-bottom-right-radius: $global-radius;
+		}
+	}
+
+	&--ui {
+		width: 300px;
+		box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+		.palette {
+			width: 50px;
+			margin: 0;
+			box-shadow: none;
+			border-radius: 0;
+			&:first-of-type {
+				border-top-left-radius: $global-radius;
+				border-bottom-left-radius: $global-radius;
+			}
+			&:last-of-type {
+				border-top-right-radius: $global-radius;
+				border-bottom-right-radius: $global-radius;
+			}
+		}
+	}
+}
+
+// To Colors
+.bg-primary {
+	 background: $primary-color;
+	 &--light {
+		 background: $primary-color-light;
+	 }
+	 &--lighter {
+		 background: $primary-color-lighter;
+	 }
+	 &--dark {
+		 background: $primary-color-dark;
+	 }
+	 &--darker {
+		 background: $primary-color-darker;
+	 }
+ }
+.bg-secondary {
+	background: $secondary-color;
+	&--light {
+		background: $secondary-color-light;
+	}
+	&--lighter {
+		background: $secondary-color-lighter;
+	}
+	&--dark {
+		background: $secondary-color-dark;
+	}
+	&--darker {
+		background: $secondary-color-darker;
+	}
+}
+.bg-info {
+	background: $info-color;
+	&--light {
+		background: $info-color-light;
+	}
+	&--lighter {
+		background: $info-color-lighter;
+	}
+	&--dark {
+		background: $info-color-dark;
+	}
+	&--darker {
+		background: $info-color-darker;
+	}
+}
+.bg-success {
+	background: $success-color;
+	&--light {
+		background: $success-color-light;
+	}
+	&--lighter {
+		background: $success-color-lighter;
+	}
+	&--dark {
+		background: $success-color-dark;
+	}
+	&--darker {
+		background: $success-color-darker;
+	}
+}
+.bg-warning {
+	background: $warning-color;
+	&--light {
+		background: $warning-color-light;
+	}
+	&--lighter {
+		background: $warning-color-lighter;
+	}
+	&--dark {
+		background: $warning-color-dark;
+	}
+	&--darker {
+		background: $warning-color-darker;
+	}
+}
+.bg-alert {
+	background: $alert-color;
+	&--light {
+		background: $alert-color-light;
+	}
+	&--lighter {
+		background: $alert-color-lighter;
+	}
+	&--dark {
+		background: $alert-color-dark;
+	}
+	&--darker {
+		background: $alert-color-darker;
+	}
+}
+
+.bg-grey-dim {
+	background: $grey-dim;
+	&--light {
+		background: $grey-dim-light;
+	}
+	&--dark {
+		background: $grey-dim-dark;
+	}
+}
+.bg-grey-bright {
+	background: $grey-bright;
+	&--light {
+		background: $grey-bright-light;
+	}
+	&--dark {
+		background: $grey-bright-dark;
+	}
+}
+.text-primary {
+	color: $primary-color;
+	&--light {
+		color: $primary-color-light;
+	}
+	&--lighter {
+		color: $primary-color-lighter;
+	}
+	&--dark {
+		color: $primary-color-dark;
+	}
+	&--darker {
+		color: $primary-color-darker;
+	}
+}
+.text-secondary {
+	color: $secondary-color;
+	&--light {
+		color: $secondary-color-light;
+	}
+	&--lighter {
+		color: $secondary-color-lighter;
+	}
+	&--dark {
+		color: $secondary-color-dark;
+	}
+	&--darker {
+		color: $secondary-color-darker;
+	}
+}
+.text-info {
+	color: $info-color;
+	&--light {
+		color: $info-color-light;
+	}
+	&--lighter {
+		color: $info-color-lighter;
+	}
+	&--dark {
+		color: $info-color-dark;
+	}
+	&--darker {
+		color: $info-color-darker;
+	}
+}
+.text-success {
+	color: $success-color;
+	&--light {
+		color: $success-color-light;
+	}
+	&--lighter {
+		color: $success-color-lighter;
+	}
+	&--dark {
+		color: $success-color-dark;
+	}
+	&--darker {
+		color: $success-color-darker;
+	}
+}
+.text-warning {
+	color: $warning-color;
+	&--light {
+		color: $warning-color-light;
+	}
+	&--lighter {
+		color: $warning-color-lighter;
+	}
+	&--dark {
+		color: $warning-color-dark;
+	}
+	&--darker {
+		color: $warning-color-darker;
+	}
+}
+.text-alert {
+	color: $alert-color;
+	&--light {
+		color: $alert-color-light;
+	}
+	&--lighter {
+		color: $alert-color-lighter;
+	}
+	&--dark {
+		color: $alert-color-dark;
+	}
+	&--darker {
+		color: $alert-color-darker;
+	}
+}
+
+.text-grey-dim {
+	color: $grey-dim;
+	&--light {
+		color: $grey-dim-light;
+	}
+	&--dark {
+		color: $grey-dim-dark;
+	}
+}
+.text-grey-bright {
+	color: $grey-bright;
+	&--light {
+		color: $grey-bright-light;
+	}
+	&--dark {
+		color: $grey-bright-dark;
+	}
+}
+
+.brand-ie {
+	color: $brand-ie;
+}
+.brand-chrome {
+	color: $brand-chrome;
+}
+.brand-firefox {
+	color: $brand-firefox;
+}
+.brand-safari {
+	color: $brand-safari;
+}
+.brand-angular {
+	color: $brand-angular;
+}
+.brand-javascript {
+	color: #333;
+	background-color: $brand-javascript;
+}
+.brand-sass {
+	color: $brand-sass;
+}
+.brand-github {
+	color: $brand-github;
+}
+.brand-nodes {
+	color: $brand-nodes;
+}
+
+
+// Media Queries
+// Larger than mobile
+@media (#{$bp-larger-than-mobile}) {}
+
+// Larger than phablet (also point when grid becomes active)
+@media (#{$bp-larger-than-phablet}) {}
+
+// Larger than tablet
+@media (#{$bp-larger-than-tablet}) {}
+
+// Larger than desktop
+@media (#{$bp-larger-than-desktop}) {}
+
+// Larger than Desktop HD
+@media (#{$bp-larger-than-desktophd}) {}

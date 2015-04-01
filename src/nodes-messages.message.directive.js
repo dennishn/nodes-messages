@@ -6,7 +6,7 @@
 		.directive('nodesMessagesMessage', message);
 
 	/* @ngInject */
-	function message(messagesProvider) {
+	function message(nodesMessages, $timeout) {
 
 		var directive = {
 			restrict: 'EA',
@@ -23,21 +23,21 @@
 		function link(scope, element) {
 			if (scope.message.dismissOnTimeout) {
 				$timeout(function () {
-					messagesProvider.dismiss(scope.message.id);
+					nodesMessages.dismiss(scope.message.id);
 				}, scope.message.timeout);
 			}
 
 			if (scope.message.dismissOnClick) {
 				element.bind('click', function () {
-					messagesProvider.dismiss(scope.message.id);
+					nodesMessages.dismiss(scope.message.id);
 					scope.$apply();
 				});
 			}
 		}
 
-		function controller($scope, messagesProvider) {
+		function controller($scope, nodesMessages) {
 			$scope.dismiss = function () {
-				messagesProvider.dismiss($scope.message.id);
+				nodesMessages.dismiss($scope.message.id);
 			};
 		}
 

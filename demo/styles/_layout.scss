@@ -1,0 +1,79 @@
+/*
+ 	Nodes Documentation Kit - Global Layout
+	Author: Dennis Haulund Nielsen
+*/
+
+/*
+	Contents:
+
+	- Variables
+
+	- Core Layout
+		- Desktop+
+*/
+
+/*
+	Variables
+*/
+$left-content-width: 400px;
+
+/*
+	Core Layout
+*/
+.page {
+	@include clearfix;
+	.left-content,
+	.right-content {
+		float: left;
+		width: 100%;
+	}
+}
+
+// Desktop+
+@media (#{$bp-larger-than-desktop}) {
+	.page {
+		display: flex;
+
+		.left-content,
+		.right-content {
+			flex: 1 0 auto;
+		}
+
+		.left-content {
+			position: fixed;
+			width: $left-content-width;
+			height: 100%;
+		}
+		.right-content {
+			margin-left: $left-content-width;
+			width: calc(100% - #{$left-content-width});
+		}
+	}
+
+	.left-content {
+		.container {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			justify-content: flex-start;
+			align-items: stretch;
+			width: 90%;
+			height: 100vh;
+			.row {
+				display: flex;
+				flex: 0 1 auto;
+				&.footer-info {
+					flex: 1;
+					align-items: flex-end;
+				}
+			}
+		}
+	}
+
+
+	.full-section {
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+	}
+}

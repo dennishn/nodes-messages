@@ -54,7 +54,7 @@ module.exports = function (grunt) {
 				tasks: ['wiredep', 'bs-reload']
 			},
 			js: {
-				files: ['<%= yeoman.src %>/**/*.js'],
+				files: ['<%= yeoman.src %>/**/*.js', 'demo/**/*.js'],
 				tasks: ['bs-reload']
 			},
 			html: {
@@ -62,7 +62,7 @@ module.exports = function (grunt) {
 				tasks: ['bs-reload']
 			},
 			sass: {
-				files: ['<%= yeoman.src %>/**/*.{scss,sass}'],
+				files: ['<%= yeoman.src %>/**/*.{scss,sass}', 'demo/**/*.{scss,sass}'],
 				tasks: ['sass:server', 'autoprefixer', 'bs-injectScss']
 			},
 			gruntfile: {
@@ -90,11 +90,15 @@ module.exports = function (grunt) {
 		// Compiles Sass to CSS and generates necessary files if requested
 		sass: {
 			options: {
-				sourcemap: true
+				sourceMap: true,
+				sourceComments: true,
+				outFile: '.tpm/styles/test',
+				omitSourceMapUrl: false
 			},
 			server: {
 				files: {
-					'.tmp/styles/<%= pkg.name %>.css': '<%= yeoman.src %>/<%= pkg.name %>.scss'
+					'<%= yeoman.dist %>/<%= pkg.name %>.css': '<%= yeoman.src %>/<%= pkg.name %>.scss',
+					'demo/demo.css': 'demo/styles/demo.scss'
 				}
 			}
 		},
@@ -145,6 +149,19 @@ module.exports = function (grunt) {
 		/*
 			Global Build Tasks
 		*/
+		useminPrepare: {
+			html: 'index.html',
+			options: {
+				flow: {
+					steps: {
+						css: []
+					}
+				}
+			}
+		},
+		usemin: {
+
+		},
 		concat: {
 			options: {
 				banner: '<%= meta.banner %>'
@@ -224,6 +241,7 @@ module.exports = function (grunt) {
 		grunt.task.run([
 			'clean:server',
 			'wiredep',
+			'sass',
 			'concurrent:server',
 			'autoprefixer',
 			'bs-connect',
@@ -265,13 +283,13 @@ module.exports = function (grunt) {
 	grunt.registerTask('bs-connectDist', function () {
 		browserSync({
 			server: {
-				baseDir: ['/']
+				baseDir: ['.']
 			}
 		});
 	});
 
 	grunt.registerTask('bs-injectScss', function () {
-		browserSync.reload(appConfig.moduleName + '.css');
+		browserSync.reload([appConfig.moduleName + '.css', 'demo.css']);
 	});
 
 	grunt.registerTask('bs-reload', function () {

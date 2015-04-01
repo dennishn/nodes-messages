@@ -1,0 +1,39 @@
+/*
+	Nodes Documentation Kit - Left Sidebar Styling
+	Author: Dennis Haulund Nielsen
+
+	note:
+	These must not be confused with the global layout rules,
+	the styles in this document are for cosmetic stuff only.
+*/
+
+.left-content {
+	background: $ui-light;
+
+	border-right: none;
+	border-bottom: 1px solid $grey-bright-dark;
+
+	.module-info,
+	.installation-info {
+		margin-top: $global-spacing;
+	}
+
+	.module-info {
+		text-align: center;
+	}
+
+	.installation-info {
+//		font-size: $small-font-size;
+	}
+
+	.footer-info {
+		margin-bottom: $global-spacing-small;
+		font-size: $small-font-size;
+	}
+}
+@media (#{$bp-larger-than-desktop}) {
+	.left-content {
+		border-right: 1px solid $grey-bright-dark;
+		border-bottom: none;
+	}
+}

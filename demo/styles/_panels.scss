@@ -1,0 +1,28 @@
+.panel {
+	margin: 2.5rem 0;
+	padding: 20px;
+	background: $grey-bright;
+	color: $grey-dim;
+	border-radius: $global-radius;
+
+	&__primary {
+		color: $primary-color-lighter;
+		background: $primary-color;
+	}
+	&__info {
+		color: $info-color-darker;
+		background: $info-color;
+	}
+	&__success {
+		color: $success-color-darker;
+		background: $success-color;
+	}
+	&__warning {
+		color: $warning-color-darker;
+		background: $warning-color;
+	}
+	&__alert {
+		color: $alert-color-darker;
+		background: $alert-color;
+	}
+}

@@ -1,0 +1,354 @@
+/* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+scss&plugins=line-highlight+line-numbers */
+
+/*
+ 	prism.js theme for JavaScript, CSS and HTML
+	Author: Dennis Haulund Nielsen
+*/
+
+/*
+	Contents:
+
+	- Variables
+	- Syntax highlighting
+	- Code helpers
+	- Code block
+	- Code settings
+*/
+
+/*
+	Variables
+*/
+$hint-expression: purple;
+$hint-date: pink;
+$hint-string: #3a87ad;
+$hint-function: green;
+$hint-object: #999;
+$hint-array: #f90;
+$hint-boolean: #128327;
+$hint-number: #BD3F42;
+$hint-regexp: #5A54BD;
+$hint-domelement: #5F9EA0;
+
+pre {
+	background: $grey-bright;
+	border: 1px solid $grey-bright-dark;
+	border-radius: $global-radius;
+}
+code {
+	margin: 0;
+	border: none;
+	background: none;
+}
+
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	padding: 0.5em;
+	color: #333;
+	background: #f8f8f8;
+	-webkit-text-size-adjust: none;
+}
+
+.hljs-comment,
+.diff .hljs-header,
+.hljs-javadoc {
+	color: #998;
+	font-style: italic;
+}
+
+.hljs-keyword,
+.css .rule .hljs-keyword,
+.hljs-winutils,
+.nginx .hljs-title,
+.hljs-subst,
+.hljs-request,
+.hljs-status {
+	color: #333;
+	font-weight: bold;
+}
+
+.hljs-number,
+.hljs-hexcolor,
+.ruby .hljs-constant {
+	color: #008080;
+}
+
+.hljs-string,
+.hljs-tag .hljs-value,
+.hljs-phpdoc,
+.hljs-dartdoc,
+.tex .hljs-formula {
+	color: #d14;
+}
+
+.hljs-title,
+.hljs-id,
+.scss .hljs-preprocessor {
+	color: #900;
+	font-weight: bold;
+}
+
+.hljs-list .hljs-keyword,
+.hljs-subst {
+	font-weight: normal;
+}
+
+.hljs-class .hljs-title,
+.hljs-type,
+.vhdl .hljs-literal,
+.tex .hljs-command {
+	color: #458;
+	font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-tag .hljs-title,
+.hljs-rules .hljs-property,
+.django .hljs-tag .hljs-keyword {
+	color: #000080;
+	font-weight: normal;
+}
+
+.hljs-attribute,
+.hljs-variable,
+.lisp .hljs-body {
+	color: #008080;
+}
+
+.hljs-regexp {
+	color: #009926;
+}
+
+.hljs-symbol,
+.ruby .hljs-symbol .hljs-string,
+.lisp .hljs-keyword,
+.clojure .hljs-keyword,
+.scheme .hljs-keyword,
+.tex .hljs-special,
+.hljs-prompt {
+	color: #990073;
+}
+
+.hljs-built_in {
+	color: #0086b3;
+}
+
+.hljs-preprocessor,
+.hljs-pragma,
+.hljs-pi,
+.hljs-doctype,
+.hljs-shebang,
+.hljs-cdata {
+	color: #999;
+	font-weight: bold;
+}
+
+.hljs-deletion {
+	background: #fdd;
+}
+
+.hljs-addition {
+	background: #dfd;
+}
+
+.diff .hljs-change {
+	background: #0086b3;
+}
+
+.hljs-chunk {
+	color: #aaa;
+}
+
+
+/*
+	Code helpers
+
+	These classes are meant to be used on inline text to give it a visual meaning
+	when documenting code.
+
+	Supported styles:
+
+	.js-type: use this to make an element stand out as a label when defining javascript types:
+	<span class="js-type js-type__string">string</span>
+
+		modifiers:
+		__string
+		__bool
+		__int
+		__function
+		__array
+		__object
+		__markup
+
+	.js-{type}: use this to highlight text that refers to code content:
+	<span class="js-string">'some string'</span>
+
+	.type-hint-expression {
+  background:purple;
+}
+
+.type-hint-date {
+  background:pink;
+}
+
+.type-hint-string {
+  background:#3a87ad;
+}
+
+.type-hint-function {
+  background:green;
+}
+
+.type-hint-object {
+  background:#999;
+}
+
+.type-hint-array {
+  background:#F90;;
+}
+
+.type-hint-boolean {
+  background:rgb(18, 131, 39);
+}
+
+.type-hint-number {
+  background:rgb(189, 63, 66);
+}
+
+.type-hint-regexp {
+  background: rgb(90, 84, 189);
+}
+
+.type-hint-domelement {
+  background: rgb(95, 158, 160);
+}
+
+		types:
+		js-method
+		js-string
+		js-bool
+		js-int
+		js-property
+*/
+
+.js-type {
+	display: inline-block;
+	padding: 4px 8px;
+	border-radius: $global-radius;
+	&__expression {
+		background: $hint-expression;
+		color: $grey-bright-light;
+	}
+	&__date {
+		background: $hint-date;
+		color: $grey-dim-dark;
+	}
+	&__string {
+		background: $hint-string;
+		color: $grey-bright-light;
+	}
+	&__boolean {
+		background: $hint-boolean;
+		color: $grey-bright-light;
+	}
+	&__number {
+		background: $hint-number;
+		color: $grey-bright-light;
+	}
+	&__regexp {
+		background: $hint-regexp;
+		color: $grey-bright-light;
+	}
+	&__function {
+		background: $hint-function;
+		color: $grey-bright-light;
+	}
+	&__array {
+		background: $hint-array;
+		color: $grey-bright-light;
+	}
+	&__object {
+		background: $hint-object;
+		color: $grey-bright-light;
+	}
+	&__domelement,
+	&__markup {
+		background: $hint-domelement;
+		color: $grey-bright-light;
+	}
+}
+.js {
+	&__expression {
+		color: $hint-expression;
+	}
+	&__date {
+		color: $hint-date;
+	}
+	&__string {
+		color: $hint-string;
+	}
+	&__boolean {
+		color: $hint-boolean;
+	}
+	&__number {
+		color: $hint-number;
+	}
+	&__regexp {
+		color: $hint-regexp;
+	}
+	&__function {
+		color: $hint-function;
+	}
+	&__array {
+		color: $hint-array;
+	}
+	&__object {
+		color: $hint-object;
+	}
+	&__domelement,
+	&__markup {
+		color: $hint-domelement;
+	}
+}
+
+/*
+	Code block
+*/
+.code-block {
+	margin-bottom: 2.5rem;
+	> p {
+		margin: 0;
+	}
+}
+
+/*
+	Code settings
+*/
+.code-settings {
+	width: 100%;
+	margin-top: 2.5rem;
+	border: 1px solid $grey-bright-dark;
+	th:first-child, td:first-child {
+		padding-left: 15px;
+	}
+	th:last-of-type, td:last-of-type {
+		width: 40%;
+	}
+
+	td + td,
+	th + th {
+		border-left: 1px solid $grey-bright-dark;
+	}
+	th, td {
+		border-color: $grey-bright-dark;
+	}
+	th {
+		background: $grey-bright;
+	}
+}

@@ -6,7 +6,7 @@
 		.directive('nodesMessagesWrapper', wrapper);
 
 	/* @ngInject */
-	function wrapper(messagesProvider) {
+	function wrapper(nodesMessages) {
 
 		var directive = {
 			restrict: 'EA',
@@ -20,10 +20,10 @@
 
 			return function(scope) {
 				// pænere end ..Pos!
-				scope.hPos = messagesProvider.settings.horizontalPosition;
-				scope.vPos = messagesProvider.settings.verticalPosition;
+				scope.hPos = nodesMessages.settings.horizontalPosition;
+				scope.vPos = nodesMessages.settings.verticalPosition;
 
-				scope.messages = messagesProvider.messages;
+				scope.messages = nodesMessages.messages;
 			};
 		}
 

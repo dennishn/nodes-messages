@@ -1,0 +1,199 @@
+/*
+* Skeleton V2.0.4
+* Copyright 2014, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 12/9/2014
+* Sass Version by Seth Coelen https://github.com/whatsnewsaes
+*/
+
+/*
+	Modified by Dennis Haulund Nielsen
+*/
+
+// Table of contents
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+//- Grid
+//- Base Styles
+//- Typography
+//- Links
+//- Buttons
+//- Forms
+//- Lists
+//- Code
+//- Tables
+//- Spacing
+//- Utilities
+//- Clearing
+//- Media Queries
+
+
+// Functions
+@function grid-column-width($n) {
+	@return $column-width * $n - ($column-margin*($total-columns - $n)/$total-columns);
+}
+
+@function grid-offset-length($n) {
+	@return grid-column-width($n) + $column-margin;
+}
+
+// Grid
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+
+
+// Base Styles
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+// NOTE
+// html is set to 62.5% so that all the REM measurements throughout Skeleton
+// are based on 10px sizing. So basically 1.5rem = 15px :)
+
+
+// Forms
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+
+
+// Lists
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+ul {
+	list-style: circle inside;
+}
+
+ol {
+	list-style: decimal inside;
+	padding-left: 0;
+	margin-top: 0;
+}
+
+ul {
+	padding-left: 0;
+	margin-top: 0;
+	ul, ol {
+		margin: 1.5rem 0 1.5rem 3rem;
+		font-size: 90%;
+	}
+}
+
+ol {
+	ol, ul {
+		margin: 1.5rem 0 1.5rem 3rem;
+		font-size: 90%;
+	}
+}
+
+li {
+	margin-bottom: 1rem;
+}
+
+// Code
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+code {
+	padding: .2rem .5rem;
+	margin: 0 .2rem;
+	font-size: 90%;
+	white-space: nowrap;
+	background: lighten($light-grey, 6.4%);
+	border: 1px solid $light-grey;
+	border-radius: $global-radius;
+}
+
+pre > code {
+	display: block;
+	padding: 1rem 1.5rem;
+	white-space: pre;
+}
+
+// Tables
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+th,
+td {
+	padding: 12px 15px;
+	text-align: left;
+	border-bottom: 1px solid $light-grey;
+}
+
+th:first-child,
+td:first-child {
+	padding-left: 0;
+}
+
+th:last-child,
+td:last-child {
+	padding-right: 0;
+}
+
+// Spacing
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+
+// Utilities
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+.u-full-width {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.u-max-full-width {
+	max-width: 100%;
+	box-sizing: border-box;
+}
+
+.u-pull-right {
+	float: right;
+}
+
+.u-pull-left {
+	float: left;
+}
+
+// Misc
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+hr {
+	margin-top: 3rem;
+	margin-bottom: 3.5rem;
+	border-width: 0;
+	border-top: 1px solid $light-grey;
+}
+
+// Clearing
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// Self Clearing Goodness
+
+.container:after,
+.row:after,
+.u-cf {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+// Media Queries
+//––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// Note: The best way to structure the use of media queries is to create the queries
+// near the relevant code. For example, if you wanted to change the styles for buttons
+// on small devices, paste the mobile query code up in the buttons section and style it
+// there.
+
+// Larger than mobile
+@media (#{$bp-larger-than-mobile}) {}
+
+// Larger than phablet (also point when grid becomes active)
+@media (#{$bp-larger-than-phablet}) {}
+
+// Larger than tablet
+@media (#{$bp-larger-than-tablet}) {}
+
+// Larger than desktop
+@media (#{$bp-larger-than-desktop}) {}
+
+// Larger than Desktop HD
+@media (#{$bp-larger-than-desktophd}) {}

@@ -1,0 +1,17 @@
+/*
+	PROJECT SPECIFIC STYLING
+*/
+.hero-unit {
+	align-items: flex-start;
+	margin-top: $global-spacing;
+
+	.browser {
+		margin-bottom: $global-spacing;
+	}
+
+	.icon-list--inline {
+		li {
+			margin: 0 $global-spacing-small;
+		}
+	}
+}

@@ -6,41 +6,463 @@
 		<base href="/">
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width">
-		<link rel="stylesheet" href="styles/nodes-messages.css">
+
+		<!-- Demo Style kit-->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="demo/demo.css">
+		<!-- Module Style -->
+		<link rel="stylesheet" href="dist/nodes-messages.css">
+
+
 	</head>
 	<body ng-app="demoApp" ng-controller="demoCtrl as demo">
 
-		<nodes-messages-wrapper></nodes-messages-wrapper>
+		<div class="page">
 
-		<button ng-click="demo.createMessage()">Create message</button>
-		<button ng-click="demo.dismissLast()">Dismiss last</button>
-		<button ng-click="demo.dismissAll()">Dismiss all</button>
+			<!-- Left Sidebar -->
+			<div class="left-content">
+				<div class="container">
+
+					<!-- Site Header -->
+					<div class="row module-info">
+						<div class="twelve columns">
+							<header>
+								<h4 class="text-primary">Nodes Messages module</h4>
+								<h6 class="text-secondary--dark">Angular Module for toasts and flash messages</h6>
+							</header>
+						</div>
+					</div>
+
+					<!-- External Links -->
+					<div class="row meta-info">
+						<div class="twelve columns">
+							<section>
+								<ul class="external-links">
+									<li>
+										<a href="https://github.com/dennishn/nodes-messages" target="_blank" title="Code on Github">
+											<i class="icon-github_badge brand-github"></i>
+										</a>
+									</li>
+									<li>
+										<a href="http://www.nodesagency.com/" target="_blank" title="Created by Nodes Agency">
+											<i class="icon-nodes brand-nodes"></i>
+										</a>
+									</li>
+								</ul>
+							</section>
+						</div>
+					</div>
+
+					<!-- Installation instruction -->
+					<div class="row installation-info">
+						<div class="twelve columns">
+							<section>
+								<div class="code-block">
+									<p>Install with Bower:</p>
+									<pre><code class="language-bash" data-lang="bash">$bower install nodes-messages --save</code></pre>
+								</div>
+								<div class="code-block">
+									<p>Add the module to your applications depency list:</p>
+									<pre><code class="language-javascript">angular.module('application', ['nodes-messages']);</code></pre>
+								</div>
+								<div class="code-block">
+									<p>Finally you need to include the directive somewhere in your html:</p>
+<pre><code class="language-markup">&lt;body&gt;
+	&lt;nodes-messages-wrapper&gt;&lt;/nodes-messages-wrapper&gt;
+&lt;/body&gt;</code></pre>
+								</div>
+							</section>
+						</div>
+					</div>
+
+					<!-- Footer -->
+					<div class="row footer-info">
+						<div class="twelve columns">
+							<footer>
+								Licensed under: <a href="#" target="_blank">The MIT License</a>
+							</footer>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+			<nav id="navigation" class="page-navigation">
+				<ul>
+					<li>
+						<a href="#dependencies">Dependencies</a>
+					</li>
+					<li>
+						<a href="#configuration">Configuration</a>
+					</li>
+					<li>
+						<a href="#usage">Usage</a>
+					</li>
+					<li>
+						<a href="#examples">Examples</a>
+					</li>
+				</ul>
+			</nav>
+
+			<div class="right-content">
+
+				<section id="dependencies" class="full-section hero-unit">
+
+					<div class="container">
+
+						<div class="row">
+
+							<div class="eight columns columns--center">
+
+								<div class="browser browser--desktop">
+									<div class="browser__top">
+
+										<div class="browser__buttons">
+											<span class="browser__button"></span>
+											<span class="browser__button"></span>
+											<span class="browser__button"></span>
+										</div>
+
+										<div class="browser__addressbar"></div>
+
+									</div>
+
+									<div class="browser__viewport">
+										<div class="nodes-messages-demo-static">
+											<div class="nodes-message-demo-static"></div>
+											<div class="nodes-message-demo-static"></div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="row">
+							<div class="twelve columns text-center">
+
+								<h4>Build with:</h4>
+
+								<ul class="icon-list icon-list--inline flex-center-h">
+									<li>
+										<i class="icon-angular brand-angular"></i>
+									</li>
+									<li>
+										<i class="icon-javascript brand-javascript"></i>
+									</li>
+									<li>
+										<i class="icon-sass brand-sass"></i>
+									</li>
+								</ul>
+
+							</div>
+						</div>
+
+						<div class="row">
+
+							<div class="six columns">
+
+								<h5>
+									Dependencies:
+								</h5>
+
+								<ul class="link-list">
+									<li>
+										<a href="https://github.com/angular/bower-angular">angular</a>
+									</li>
+									<li>
+										<a href="https://github.com/angular/bower-angular-sanitize">angular-sanitize</a>
+									</li>
+									<li>
+										<a href="https://github.com/angular/bower-angular-animate">angular-animate</a>
+									</li>
+								</ul>
+
+							</div>
+
+							<div class="six columns">
+
+								<h5>
+									Tested in:
+								</h5>
+
+								<ul class="icon-list">
+									<li><i class="icon-chrome brand-chrome"></i> Chrome <small>(tested on latest 2 versions)</small></li>
+									<li><i class="icon-safari brand-safari"></i> Safari <small>(tested on latest 2 versions)</small></li>
+									<li><i class="icon-firefox brand-firefox"></i> Firefox <small>(tested on latest 2 versions)</small></li>
+									<li><i class="icon-ie brand-ie"></i> Internet Explorer <small>(tested on IE10, IE11)</small></li>
+								</ul>
+
+							</div>
+
+
+						</div>
+					</div>
+
+				</section>
+
+				<section id="configuration" class="full-section configuration-section">
+
+					<div class="container">
+						<div class="row">
+
+							<div class="twelve columns">
+
+								<h3>Global configuration</h3>
+
+								<p>Some options are only configurable on a global level:</p>
+
+								<table class="code-settings">
+									<thead>
+										<tr>
+											<th>Option</th>
+											<th>Type</th>
+											<th>Details</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												horizontalPosition
+											</td>
+											<td>
+												<span class="js-type js-type__string">string</span>
+											</td>
+											<td>
+												Supported values:
+												<ul>
+													<li><span class="js__string">'left'</span></li>
+													<li><span class="js__string">'center'</span></li>
+													<li><span class="js__string">'right'</span></li>
+												</ul>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												verticalPosition
+											</td>
+											<td>
+												<span class="js-type js-type__string">string</span>
+											</td>
+											<td>
+												Supported values:
+												<ul>
+													<li><span class="js__string">'top'</span></li>
+													<li><span class="js__string">'center'</span></li>
+													<li><span class="js__string">'bottom'</span></li>
+												</ul>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												maxNumber
+											</td>
+											<td>
+												<span class="js-type js-type__number">int</span>
+											</td>
+											<td>
+												Limit the maximum number of messages displayed at one time
+											</td>
+										</tr>
+									</tbody>
+								</table>
+
+								<p>Make sure the nodesMessagesProvider is injected in to your applications config module, and use the providers <span class="js-method">configure</span> method:</p>
+
+<pre><code class="language-javascript">
+angular.module('application').config(function(nodesMessagesProvider) {
+	nodesMessagesProvider.configure({
+		verticalPosition: 'top',
+		horizontalPosition: 'right',
+		maxNumber: 3
+	});
+});
+</code></pre>
+
+							</div>
+
+						</div>
+					</div>
+
+				</section>
+
+				<section id="usage" class="full-section usage-section">
+
+					<div class="container">
+						<div class="row">
+
+							<div class="twelve columns">
+
+								<h3>Basic usage:</h3>
+
+								<div class="code-block">
+									<p>
+										To get started, inject the <strong>nodesMessages</strong> provider into your controller,
+										and call the <span class="js__function">create</span> method:
+									</p>
+<pre><code class="language-javascript">
+angular.module('application').controller('appCtrl', function(nodesMessages) {
+	nodesMessages.create('The most basic message type available');
+});
+</code></pre>
+									<button class="show-example" ng-click="demo.createBasicMessage()">Show me</button>
+								</div>
+
+								<h3>Advanced usage:</h3>
+
+								<div class="code-block">
+									<p>
+										You can configure the individual messages when calling the <span class="js__function">create</span> method:
+									</p>
+<pre><code class="language-javascript">
+vm.message = {
+	type: 'success',
+	content: 'Such message',
+	dismissButton: true,
+	dismissButtonHtml: '&times;',
+	dismissOnClick: true,
+	dismissOnTimeout: false,
+	timeout: 4000
+};
+</code></pre>
+									<button class="show-example" ng-click="demo.createAdvancedMessage()">Show me</button>
+								</div>
+
+								<h4>Options:</h4>
+								<table class="code-settings">
+									<thead>
+										<tr>
+											<th>Option</th>
+											<th>Type</th>
+											<th>Details</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												type
+											</td>
+											<td>
+												<span class="js-type js-type__string">string</span>
+											</td>
+											<td>
+												Use this to add a contextual class to your message (ie. <span class="js__string">'success'</span>, <span class="js__string">'error'</span> etc.)
+											</td>
+										</tr>
+										<tr>
+											<td>content</td>
+											<td><span class="js-type js-type__string">string</span> or <span class="js-type js-type__markup">html</span></td>
+											<td>
+												You can pass both a string or html, giving you the freedom to customize the messages as you please
+											</td>
+										</tr>
+										<tr>
+											<td>dismissButton</td>
+											<td><span class="js-type js-type__boolean">boolean</span></td>
+											<td>
+												Shows or hides the dismiss button
+											</td>
+										</tr>
+										<tr>
+											<td>dismissButtomHtml</td>
+											<td><span class="js-type js-type__string">string</span> or <span class="js-type js-type__markup">html</span></td>
+											<td>
+												You can pass both a string or html, giving you the freedom to customize the close button (ie. use an icon font)
+											</td>
+										</tr>
+										<tr>
+											<td>dissmissOnClick</td>
+											<td><span class="js-type js-type__boolean">boolean</span></td>
+											<td>
+												If <span class="js__boolean">boolean</span> is true, the message can be closed by pressing anywhere on the message - not just the close button
+											</td>
+										</tr>
+										<tr>
+											<td>dismissOnTimeout</td>
+											<td><span class="js-type js-type__boolean">boolean</span></td>
+											<td>
+												Should the message auto-close?
+											</td>
+										</tr>
+										<tr>
+											<td>timeout</td>
+											<td><span class="js-type js-type__number">int <small>(ms)</small></span></td>
+											<td>
+												If <span class="js__boolean">boolean</span> is true, the message will be auto-closed after this duration
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<p>You can see more examples in the examples section below.</p>
+							</div>
+
+						</div>
+					</div>
+
+				</section>
+
+				<section id="examples" class="full-section example-section">
+					<div class="container">
+						<div class="row">
+							<div class="twelve columns">
+
+							</div>
+						</div>
+					</div>
+				</section>
+
+			</div>
+
+		</div>
+
+		<div class="nodes-messages-demo">
+			<nodes-messages-wrapper></nodes-messages-wrapper>
+		</div>
+
+		<!--<button ng-click="demo.createMessage()">Create message</button>-->
+		<!--<button ng-click="demo.dismissLast()">Dismiss last</button>-->
+		<!--<button ng-click="demo.dismissAll()">Dismiss all</button>-->
 
 		<!-- bower:js -->
+		<script src="bower_components/jquery/dist/jquery.js"></script>
 		<script src="bower_components/angular/angular.js"></script>
 		<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 		<script src="bower_components/angular-animate/angular-animate.js"></script>
 		<!-- endbower -->
 
+		<!-- Demo scripts -->
+		<script src="demo/scripts/highlight/highlight.pack.js"></script>
+		<script src="demo/scripts/scrollSpy/ddscrollspy.js"></script>
+		<script src="demo/scripts/demo.js"></script>
+
+		<!-- Module Specific scripts -->
 		<script src="src/nodes-messages.module.js"></script>
 		<script src="src/nodes-messages.provider.js"></script>
 		<script src="src/nodes-messages.wrapper.directive.js"></script>
 		<script src="src/nodes-messages.message.directive.js"></script>
 
+		<!-- Demo functionality -->
 		<script>
-			angular.module('demoApp', ['ngSanitize', 'nodes-messages']);
+			angular.module('demoApp', ['nodes-messages']);
 
-			angular.module('demoApp').config(function(messagesProviderProvider) {
+			angular.module('demoApp').config(function(nodesMessagesProvider) {
 
-				messagesProviderProvider.configure({
+				nodesMessagesProvider.configure({
 					verticalPosition: 'top',
-					horizontalPosition: 'right'
+					horizontalPosition: 'right',
+					maxNumber: 3
 				});
 
 			});
 
-			angular.module('demoApp').controller('demoCtrl', function($scope, messagesProvider) {
+			angular.module('demoApp').controller('demoCtrl', function($scope, nodesMessages) {
 				var vm = this;
+
+				// Demo Methods
+				vm.createBasicMessage = createBasicMessage;
+				vm.createAdvancedMessage = createAdvancedMessage;
 
 				function _getRandomMessage() {
 					return vm.messageContents[Math.floor(Math.random() * vm.messageContents.length)];
@@ -69,30 +491,48 @@
 
 				vm.openMessages = [];
 
+				function createBasicMessage() {
+					nodesMessages.create('The most basic message type available');
+				}
+
+				function createAdvancedMessage() {
+
+					nodesMessages.create({
+						type: 'success',
+						content: 'Such message',
+						dismissButton: true,
+						dismissButtonHtml: '&times;',
+						dismissOnClick: true,
+						dismissOnTimeout: false,
+						timeout: 4000
+					});
+
+				}
+
 				vm.createMessage = function() {
 
 					var msg = angular.copy(vm.message);
 
 					msg.content = _getRandomMessage();
 
-					var msgRef =  messagesProvider.create(msg);
+					var msgRef =  nodesMessages.create(msg);
 					vm.openMessages.push(msgRef);
 
 				};
 
-				for(var i = 0; i < 5; i++) {
-					vm.createMessage();
-				}
+//				for(var i = 0; i < 5; i++) {
+//					vm.createMessage();
+//				}
 
 				vm.dismissLast = function() {
 
-					messagesProvider.dismiss(vm.openMessages[vm.openMessages.length -1]);
+					nodesMessages.dismiss(vm.openMessages[vm.openMessages.length -1]);
 					vm.openMessages.pop();
 				};
 
 				vm.dismissAll = function() {
 
-					messagesProvider.dismiss();
+					nodesMessages.dismiss();
 
 				}
 

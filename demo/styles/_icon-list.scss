@@ -1,0 +1,22 @@
+$icon-size: 32px;
+
+.icon-list {
+	@include clearfix;
+	list-style: none;
+	> li {
+		display: flex;
+		align-items: center;
+	}
+	[class^="icon-"] {
+		font-size: $icon-size;
+	}
+
+	&--inline {
+
+		li {
+			float: left;
+			margin-bottom: 0;
+		}
+
+	}
+}

@@ -3,7 +3,7 @@
 
 	angular
 		.module('nodes-messages.provider', [])
-		.provider('messagesProvider', messagesProvider);
+		.provider('nodesMessages', messagesProvider);
 
 	function messagesProvider() {
 		var messages = [],

@@ -1,0 +1,195 @@
+.button,
+button {
+	display: inline-block;
+	height: 38px;
+	margin-bottom: 16px;
+	padding: 0 30px;
+	color: $grey-dim-light;
+	text-align: center;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 38px;
+	letter-spacing: .1rem;
+	text-transform: uppercase;
+	text-decoration: none;
+	white-space: nowrap;
+	background-color: transparent;
+	border-radius: $global-radius;
+	border: 1px solid $grey-dim-light;
+	cursor: pointer;
+	box-sizing: border-box;
+
+	// Hover, Focus
+	&:hover,
+	&:focus {
+		color: $grey-dim;
+		border-color: $grey-dim;
+		outline: 0;
+	}
+
+}
+
+input[type="submit"],
+input[type="reset"],
+input[type="reset"] {
+	display: inline-block;
+	height: 38px;
+	margin-bottom: 16px;
+	padding: 0 30px;
+	color: $secondary-color;
+	text-align: center;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 38px;
+	letter-spacing: .1rem;
+	text-transform: uppercase;
+	text-decoration: none;
+	white-space: nowrap;
+	background-color: transparent;
+	border-radius: $global-radius;
+	border: 1px solid $secondary-color;
+	cursor: pointer;
+	box-sizing: border-box;
+
+	// Hover, Focus
+	&:hover,
+	&:focus {
+		color: $secondary-color-dark;
+		border-color: $secondary-color-dark;
+		outline: 0;
+	}
+
+}
+
+/*
+	Contextual Colors
+*/
+input[type="submit"],
+input[type="reset"],
+input[type="reset"],
+.button,
+button {
+
+
+
+	&.button--primary {
+		color: $primary-color;
+		border-color: $primary-color;
+		&:hover,
+		&:focus {
+			color: $primary-color-dark;
+			border-color: $primary-color-dark;
+		}
+
+		&.button--solid {
+			background: $primary-color;
+			color: $grey-bright-light;
+			&:hover,
+			&:focus {
+				background: $primary-color-dark;
+				border-color: $primary-color-dark;
+			}
+		}
+	}
+
+	&.button--secondary {
+		color: $secondary-color;
+		border-color: $secondary-color;
+		&:hover,
+		&:focus {
+			color: $secondary-color-dark;
+			border-color: $secondary-color-dark;
+		}
+
+		&.button--solid {
+			background: $secondary-color;
+			color: $grey-bright-light;
+			&:hover,
+			&:focus {
+				background: $secondary-color-dark;
+				border-color: $secondary-color-dark;
+			}
+		}
+	}
+
+	&.button--info {
+		color: $info-color;
+		border-color: $info-color;
+		&:hover,
+		&:focus {
+			color: $info-color-dark;
+			border-color: $info-color-dark;
+		}
+
+		&.button--solid {
+			background: $info-color;
+			color: $grey-bright-light;
+			&:hover,
+			&:focus {
+				background: $info-color-dark;
+				border-color: $info-color-dark;
+			}
+		}
+	}
+
+	&.button--success {
+		color: $success-color;
+		border-color: $success-color;
+		&:hover,
+		&:focus {
+			color: $success-color-dark;
+			border-color: $success-color-dark;
+		}
+
+		&.button--solid {
+			background: $success-color;
+			color: $grey-bright-light;
+			&:hover,
+			&:focus {
+				background: $success-color-dark;
+				border-color: $success-color-dark;
+			}
+		}
+	}
+
+	&.button--warning {
+		color: $warning-color;
+		border-color: $warning-color;
+		&:hover,
+		&:focus {
+			color: $warning-color-dark;
+			border-color: $warning-color-dark;
+		}
+
+		&.button--solid {
+			background: $warning-color;
+			color: $grey-bright-light;
+			&:hover,
+			&:focus {
+				background: $warning-color-dark;
+				border-color: $warning-color-dark;
+			}
+		}
+	}
+
+	&.button--alert {
+		color: $alert-color;
+		border-color: $alert-color;
+		&:hover,
+		&:focus {
+			color: $alert-color-dark;
+			border-color: $alert-color-dark;
+		}
+
+		&.button--solid {
+			background: $alert-color;
+			color: $grey-bright-light;
+			&:hover,
+			&:focus {
+				background: $alert-color-dark;
+				border-color: $alert-color-dark;
+			}
+		}
+	}
+
+}

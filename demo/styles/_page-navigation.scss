@@ -1,0 +1,78 @@
+/*
+ 	Nodes Documentation Kit - External Links
+	Author: Dennis Haulund Nielsen
+
+	The main internal navigation of the page
+*/
+.page-navigation {
+	display: block;
+	width: 100%;
+	ul {
+		@include clearfix;
+		display: flex;
+		flex-flow: column;
+		justify-content: center;
+		margin: 0;
+		padding: 10px 20px;
+		list-style: none;
+	}
+	li {
+		flex: 1 1 auto;
+		margin: 0;
+		text-align: center;
+		a {
+			position: relative;
+			line-height: 40px;
+			text-decoration: none;
+			&.selected {
+				background: tomato;
+			}
+		}
+	}
+}
+@media (#{$bp-larger-than-desktop}) {
+	.page-navigation {
+		position: fixed;
+		top: 50%;
+		right: 0;
+		width: 180px;
+		transform: translateX(calc(100% - 40px)) translateY(-50%);
+		z-index: 200;
+		transition: transform .2s ease-in-out;
+		background: $ui-light;
+		border: 1px solid $grey-bright-dark;
+		border-top-left-radius: $global-radius;
+		border-bottom-left-radius: $global-radius;
+		&:hover {
+			transform: translateX(0) translateY(-50%);
+		}
+		li {
+			a {
+				display: block;
+				width: 100%;
+				padding-left: 3px;
+				color: $grey-dim;
+				&.active {
+					color: $primary-color;
+				}
+				&:before {
+					content: "";
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 3px;
+					height: 100%;
+					background: $primary-color-lighter;
+				}
+				.progress {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 3px;
+					height: 100%;
+					background: $primary-color;
+				}
+			}
+		}
+	}
+}
